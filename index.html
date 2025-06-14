@@ -86,6 +86,31 @@
     .cta-btn:hover {
       background: var(--accent);
     }
+    .language-switcher {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .lang-btn {
+      background: none;
+      border: 2px solid transparent;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .lang-btn:hover {
+      border-color: var(--primary);
+    }
+    .lang-btn.active {
+      border-color: var(--primary);
+      background: var(--gray);
+    }
+    .lang-btn img {
+      border-radius: 2px;
+    }
     /* Hero Section */
     .hero {
       display: flex;
@@ -436,94 +461,102 @@
           FlexDesk
         </div>
         <div class="nav-links">
-          <a href="#benefits">Benefits</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#benefits" data-en="Benefits" data-cn="优势">Benefits</a>
+          <a href="#pricing" data-en="Pricing" data-cn="价格">Pricing</a>
           <!-- <a href="#trust">Trust</a> -->
-          <a href="#testimonials">Testimonials</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact" class="cta-btn">Get Started</a>
+          <a href="#testimonials" data-en="Testimonials" data-cn="客户评价">Testimonials</a>
+          <a href="#faq" data-en="FAQ" data-cn="常见问题">FAQ</a>
+          <div class="language-switcher">
+            <button class="lang-btn active" data-lang="en">
+              <img src="https://flagcdn.com/w20/gb.png" alt="English" width="20" height="15">
+            </button>
+            <button class="lang-btn" data-lang="cn">
+              <img src="https://flagcdn.com/w20/cn.png" alt="中文" width="20" height="15">
+            </button>
+          </div>
+          <a href="#contact" class="cta-btn" data-en="Get Started" data-cn="开始使用">Get Started</a>
         </div>
       </nav>
     </div>
   </header>
   <section class="hero">
     <div class="container">
-      <h1>Your Office. Anywhere.</h1>
-      <div class="slogan">云端办公，随时随地</div>
-      <p>Experience secure, high-performance virtual desktops hosted in EU data centers. Instantly access your personal computer from anywhere, with full admin control, GDPR compliance, and 24/7 support. Perfect for remote work, business compliance, and secure development environments.</p>
-      <a href="#contact" class="cta-btn">Start Your Free Demo</a>
+      <h1 data-en="Your Office. Anywhere." data-cn="您的办公室，无处不在">Your Office. Anywhere.</h1>
+      <div class="slogan" data-en="云端办公，随时随地" data-cn="云端办公，随时随地">云端办公，随时随地</div>
+      <p data-en="Experience secure, high-performance virtual desktops hosted in EU data centers. Instantly access your personal computer from anywhere, with full admin control, GDPR compliance, and 24/7 support. Perfect for remote work, business compliance, and secure development environments." data-cn="体验托管在欧盟数据中心的安全、高性能虚拟桌面。随时随地即时访问您的个人计算机，拥有完全管理员控制权、GDPR合规性和24/7支持。非常适合远程工作、业务合规和安全开发环境。">Experience secure, high-performance virtual desktops hosted in EU data centers. Instantly access your personal computer from anywhere, with full admin control, GDPR compliance, and 24/7 support. Perfect for remote work, business compliance, and secure development environments.</p>
+      <a href="#contact" class="cta-btn" data-en="Start Your Free Demo" data-cn="开始免费试用">Start Your Free Demo</a>
     </div>
   </section>
   <section id="benefits">
     <div class="container">
       <div class="benefits">
         <div class="benefit">
-          <h3>EU-Based Data Privacy</h3>
-          <p>All virtual desktops are hosted in European Union data centers, ensuring full GDPR compliance and the highest standards of data privacy.</p>
+          <h3 data-en="EU-Based Data Privacy" data-cn="基于欧盟的数据隐私">EU-Based Data Privacy</h3>
+          <p data-en="All virtual desktops are hosted in European Union data centers, ensuring full GDPR compliance and the highest standards of data privacy." data-cn="所有虚拟桌面都托管在欧盟数据中心，确保完全符合GDPR标准和最高级别的数据隐私保护。">All virtual desktops are hosted in European Union data centers, ensuring full GDPR compliance and the highest standards of data privacy.</p>
         </div>
         <div class="benefit">
-          <h3>Instant Setup</h3>
-          <p>Get your virtual office up and running in minutes. No hardware shipping, no waiting – just instant, secure access.</p>
+          <h3 data-en="Instant Setup" data-cn="即时设置">Instant Setup</h3>
+          <p data-en="Get your virtual office up and running in minutes. No hardware shipping, no waiting – just instant, secure access." data-cn="几分钟内即可启动您的虚拟办公室。无需硬件运输，无需等待 - 只需即时、安全的访问。">Get your virtual office up and running in minutes. No hardware shipping, no waiting – just instant, secure access.</p>
         </div>
         <div class="benefit">
-          <h3>High-Performance Hardware</h3>
-          <p>Enjoy fast, reliable computing with guaranteed uptime and scalable resources for any workload.</p>
+          <h3 data-en="High-Performance Hardware" data-cn="高性能硬件">High-Performance Hardware</h3>
+          <p data-en="Enjoy fast, reliable computing with guaranteed uptime and scalable resources for any workload." data-cn="享受快速、可靠的计算，保证正常运行时间和可扩展资源，适用于任何工作负载。">Enjoy fast, reliable computing with guaranteed uptime and scalable resources for any workload.</p>
         </div>
         <div class="benefit">
-          <h3>Flexible Pricing</h3>
-          <p>Simple monthly plans to fit your needs and budget. Choose from Freelancer, Team, or Enterprise tiers.</p>
+          <h3 data-en="Flexible Pricing" data-cn="灵活定价">Flexible Pricing</h3>
+          <p data-en="Simple monthly plans to fit your needs and budget. Choose from Freelancer, Team, or Enterprise tiers." data-cn="简单的月度计划，满足您的需求和预算。可选择自由职业者、团队或企业级套餐。">Simple monthly plans to fit your needs and budget. Choose from Freelancer, Team, or Enterprise tiers.</p>
         </div>
         <div class="benefit">
-          <h3>24/7 Technical Support</h3>
-          <p>Our expert team is available around the clock to assist you with any technical issues or questions.</p>
+          <h3 data-en="24/7 Technical Support" data-cn="24/7技术支持">24/7 Technical Support</h3>
+          <p data-en="Our expert team is available around the clock to assist you with any technical issues or questions." data-cn="我们的专家团队全天候为您提供技术问题或咨询的协助。">Our expert team is available around the clock to assist you with any technical issues or questions.</p>
         </div>
         <div class="benefit">
-          <h3>EU IP Addresses</h3>
-          <p>Access geo-restricted services and ensure compliance with EU-based IP addresses, including Bulgaria locations.</p>
+          <h3 data-en="EU IP Addresses" data-cn="欧盟IP地址">EU IP Addresses</h3>
+          <p data-en="Access geo-restricted services and ensure compliance with EU-based IP addresses, including Bulgaria locations." data-cn="通过基于欧盟的IP地址（包括保加利亚位置）访问地理限制服务并确保合规性。">Access geo-restricted services and ensure compliance with EU-based IP addresses, including Bulgaria locations.</p>
         </div>
       </div>
     </div>
   </section>
   <section class="pricing-section" id="pricing">
-    <h2>Simple, Transparent Pricing</h2>
-    <p>Flexible plans for every need. No hidden fees, no surprises.</p>
+    <h2 data-en="Simple, Transparent Pricing" data-cn="简单、透明的定价">Simple, Transparent Pricing</h2>
+    <p data-en="Flexible plans for every need. No hidden fees, no surprises." data-cn="灵活的计划满足每个需求。无隐藏费用，无意外惊喜。">Flexible plans for every need. No hidden fees, no surprises.</p>
     <div class="pricing-table">
       <div class="pricing-plan">
-        <h4>Freelancer</h4>
-        <div class="price">€200<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <h4 data-en="Freelancer" data-cn="自由职业者">Freelancer</h4>
+        <div class="price">€200<span style="font-size:1rem;font-weight:400;" data-en="/mo" data-cn="/月">/mo</span></div>
         <ul>
-          <li>Full admin access</li>
-          <li>EU-based server</li>
-          <li>Instant setup</li>
-          <li>24/7 support</li>
-          <li>Personal use</li>
+          <li data-en="Full admin access" data-cn="完整管理员访问权限">Full admin access</li>
+          <li data-en="EU-based server" data-cn="基于欧盟的服务器">EU-based server</li>
+          <li data-en="Instant setup" data-cn="即时设置">Instant setup</li>
+          <li data-en="24/7 support" data-cn="24/7支持">24/7 support</li>
+          <li data-en="Personal use" data-cn="个人使用">Personal use</li>
         </ul>
-        <a href="#contact" class="cta-btn">Get Started</a>
+        <a href="#contact" class="cta-btn" data-en="Get Started" data-cn="开始使用">Get Started</a>
       </div>
       <div class="pricing-plan featured">
-        <h4>Team</h4>
-        <div class="price">€99<span style="font-size:1rem;font-weight:400;">/mo per user</span></div>
+        <h4 data-en="Team" data-cn="团队">Team</h4>
+        <div class="price">€99<span style="font-size:1rem;font-weight:400;" data-en="/mo per user" data-cn="/月/用户">/mo per user</span></div>
         <ul>
-          <li>All Freelancer features</li>
-          <li>Team collaboration</li>
-          <li>Priority support</li>
-          <li>Volume discounts</li>
-          <li>Shared resources</li>
-          <li>Minimum 5 members</li>
+          <li data-en="All Freelancer features" data-cn="所有自由职业者功能">All Freelancer features</li>
+          <li data-en="Team collaboration" data-cn="团队协作">Team collaboration</li>
+          <li data-en="Priority support" data-cn="优先支持">Priority support</li>
+          <li data-en="Volume discounts" data-cn="批量折扣">Volume discounts</li>
+          <li data-en="Shared resources" data-cn="共享资源">Shared resources</li>
+          <li data-en="Minimum 5 members" data-cn="最少5名成员">Minimum 5 members</li>
         </ul>
-        <a href="#contact" class="cta-btn">Start Free Demo</a>
+        <a href="#contact" class="cta-btn" data-en="Start Free Demo" data-cn="开始免费试用">Start Free Demo</a>
       </div>
       <div class="pricing-plan">
-        <h4>Enterprise</h4>
-        <div class="price">Contact Us</div>
+        <h4 data-en="Enterprise" data-cn="企业版">Enterprise</h4>
+        <div class="price" data-en="Contact Us" data-cn="联系我们">Contact Us</div>
         <ul>
-          <li>All Team features</li>
-          <li>Dedicated resources</li>
-          <li>Custom configurations</li>
-          <li>SLA guarantees</li>
-          <li>White-label options</li>
+          <li data-en="All Team features" data-cn="所有团队功能">All Team features</li>
+          <li data-en="Dedicated resources" data-cn="专用资源">Dedicated resources</li>
+          <li data-en="Custom configurations" data-cn="自定义配置">Custom configurations</li>
+          <li data-en="SLA guarantees" data-cn="SLA保证">SLA guarantees</li>
+          <li data-en="White-label options" data-cn="白标签选项">White-label options</li>
         </ul>
-        <a href="#contact" class="cta-btn">Contact Sales</a>
+        <a href="#contact" class="cta-btn" data-en="Contact Sales" data-cn="联系销售">Contact Sales</a>
       </div>
     </div>
   </section>
@@ -538,7 +571,7 @@
     </div>
   </section> -->
   <section class="testimonials-section" id="testimonials">
-    <h2>What Our Customers Say</h2>
+    <h2 data-en="What Our Customers Say" data-cn="客户评价">What Our Customers Say</h2>
     <div class="testimonials">
       <div class="testimonial">
         <div class="quote">“FlexDesk made it possible for our remote team to work securely from anywhere in the world. The EU compliance gives us peace of mind.”</div>
@@ -558,7 +591,7 @@
     </div>
   </section>
   <section class="faq-section" id="faq">
-    <h2>Frequently Asked Questions</h2>
+    <h2 data-en="Frequently Asked Questions" data-cn="常见问题">Frequently Asked Questions</h2>
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-question">Is my data really stored only in the EU?</div>
@@ -587,7 +620,7 @@
     </div>
   </section>
   <section class="contact-section" id="contact">
-    <h2>Contact Us / Request a Demo</h2>
+    <h2 data-en="Contact Us / Request a Demo" data-cn="联系我们 / 申请演示">Contact Us / Request a Demo</h2>
     <form class="contact-form" id="contactForm" autocomplete="off">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -603,12 +636,54 @@
     </div>
   </footer>
   <script>
+    // Language switching functionality
+    let currentLang = 'en';
+    
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update all elements with translation data
+      document.querySelectorAll('[data-en]').forEach(element => {
+        const text = element.getAttribute('data-' + lang);
+        if (text) {
+          element.textContent = text;
+        }
+      });
+      
+      // Update active language button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Store preference
+      localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Initialize language switcher
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for saved language preference
+      const savedLang = localStorage.getItem('preferred-language') || 'en';
+      if (savedLang !== 'en') {
+        switchLanguage(savedLang);
+      }
+      
+      // Add event listeners to language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          switchLanguage(lang);
+        });
+      });
+    });
+    
     // FAQ toggle
     document.querySelectorAll('.faq-item').forEach(item => {
       item.addEventListener('click', function() {
         this.classList.toggle('open');
       });
     });
+    
     // Contact form (demo only)
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
