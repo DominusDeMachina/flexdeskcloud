@@ -376,7 +376,7 @@
       flex-direction: column;
       gap: 1.2rem;
     }
-    .contact-form input, .contact-form textarea {
+    .contact-form input, .contact-form textarea, .contact-form select {
       width: 100%;
       padding: 0.8rem;
       border: 1px solid var(--border);
@@ -384,6 +384,7 @@
       font-size: 1rem;
       font-family: inherit;
       resize: none;
+      background: var(--white);
     }
     .contact-form textarea {
       min-height: 90px;
@@ -621,9 +622,17 @@
   </section>
   <section class="contact-section" id="contact">
     <h2 data-en="Contact Us / Request a Demo" data-cn="联系我们 / 申请演示">Contact Us / Request a Demo</h2>
-    <form class="contact-form" id="contactForm" autocomplete="off">
+    <form class="contact-form" id="contactForm" action="mailto:order@flexdesk.cloud" method="post" enctype="text/plain" autocomplete="off">
       <input type="text" name="name" placeholder="Your Name" data-placeholder-en="Your Name" data-placeholder-cn="您的姓名" required>
       <input type="email" name="email" placeholder="Your Email" data-placeholder-en="Your Email" data-placeholder-cn="您的邮箱" required>
+      <input type="tel" name="phone" placeholder="Phone Number (Optional)" data-placeholder-en="Phone Number (Optional)" data-placeholder-cn="电话号码（可选）">
+      <select name="plan" required>
+        <option value="" data-en="Select Plan" data-cn="选择计划">Select Plan</option>
+        <option value="freelancer" data-en="Freelancer - €200/mo" data-cn="自由职业者 - €200/月">Freelancer - €200/mo</option>
+        <option value="team" data-en="Team - €99/mo per user" data-cn="团队 - €99/月/用户">Team - €99/mo per user</option>
+        <option value="enterprise" data-en="Enterprise - Contact Us" data-cn="企业版 - 联系我们">Enterprise - Contact Us</option>
+      </select>
+      <input type="text" name="company" placeholder="Company Name (Optional)" data-placeholder-en="Company Name (Optional)" data-placeholder-cn="公司名称（可选）">
       <textarea name="message" placeholder="How can we help you?" data-placeholder-en="How can we help you?" data-placeholder-cn="我们如何为您提供帮助？" required></textarea>
       <button type="submit" data-en="Send Message" data-cn="发送消息">Send Message</button>
       <div class="form-success" id="formSuccess" data-en="Thank you! We will contact you soon." data-cn="谢谢！我们将很快与您联系。">Thank you! We will contact you soon.</div>
@@ -655,6 +664,14 @@
         const placeholder = element.getAttribute('data-placeholder-' + lang);
         if (placeholder) {
           element.placeholder = placeholder;
+        }
+      });
+      
+      // Update select options
+      document.querySelectorAll('select option[data-en]').forEach(element => {
+        const text = element.getAttribute('data-' + lang);
+        if (text) {
+          element.textContent = text;
         }
       });
       
@@ -692,23 +709,52 @@
       });
     });
     
-    // Contact form (demo only)
+    // Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
       const form = this;
       const success = document.getElementById('formSuccess');
       const error = document.getElementById('formError');
       success.style.display = 'none';
       error.style.display = 'none';
-      // Simulate async send
-      setTimeout(() => {
-        if (Math.random() > 0.1) { // 90% chance of success
-          form.reset();
-          success.style.display = 'block';
-        } else {
-          error.style.display = 'block';
-        }
-      }, 800);
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone') || 'Not provided';
+      const plan = formData.get('plan');
+      const company = formData.get('company') || 'Not provided';
+      const message = formData.get('message');
+      
+      // Create email body
+      const emailBody = `New FlexDesk Contact Form Submission:
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Selected Plan: ${plan}
+Company: ${company}
+
+Message:
+${message}
+
+---
+Submitted via FlexDesk website contact form`;
+      
+      // Create mailto link with all form data
+      const mailtoLink = `mailto:order@flexdesk.cloud?subject=FlexDesk Contact Form - ${name}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open email client
+      try {
+        window.location.href = mailtoLink;
+        form.reset();
+        success.style.display = 'block';
+      } catch (err) {
+        error.style.display = 'block';
+      }
+      
+      // Prevent default form submission
+      e.preventDefault();
     });
   </script>
 </body>
