@@ -6,6 +6,7 @@
   <title>FlexDesk – Your Office. Anywhere.</title>
   <meta name="description" content="Virtual office services in the EU: secure, high-performance remote desktops with GDPR compliance, instant setup, and flexible pricing.">
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     :root {
       --primary: #2563eb;
@@ -711,50 +712,13 @@
     
     // Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      const form = this;
-      const success = document.getElementById('formSuccess');
-      const error = document.getElementById('formError');
-      success.style.display = 'none';
-      error.style.display = 'none';
-      
-      // Collect form data
-      const formData = new FormData(form);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const phone = formData.get('phone') || 'Not provided';
-      const plan = formData.get('plan');
-      const company = formData.get('company') || 'Not provided';
-      const message = formData.get('message');
-      
-      // Create email body
-      const emailBody = `New FlexDesk Contact Form Submission:
-
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Selected Plan: ${plan}
-Company: ${company}
-
-Message:
-${message}
-
----
-Submitted via FlexDesk website contact form`;
-      
-      // Create mailto link with all form data
-      const mailtoLink = `mailto:order@flexdesk.cloud?subject=FlexDesk Contact Form - ${name}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      try {
-        window.location.href = mailtoLink;
-        form.reset();
-        success.style.display = 'block';
-      } catch (err) {
-        error.style.display = 'block';
-      }
-      
-      // Prevent default form submission
       e.preventDefault();
+      emailjs.sendForm('service_hu75zso', 'template_3n6429o', this)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+      }, function(error) {
+        console.log('FAILED...', error);
+      });
     });
   </script>
 </body>
